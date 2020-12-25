@@ -5,14 +5,14 @@ import psycopg2
 
 def get_default_connection():
     c = get_config()
-    conn = psycopg2.connect(database=c["sql_default_db"], user=c["sql_usr"], password=c["sql_pw"], host=c["sql_host"],
+    conn = psycopg2.connect(database=c["sql_default_db"], user=c["sql_user"], password=c["sql_secret"], host=c["sql_addr"],
                             port=c["sql_port"])
     return conn
 
 
 def get_connection():
     c = get_config()
-    conn = psycopg2.connect(database=c["sql_db"], user=c["sql_usr"], password=c["sql_pw"], host=c["sql_host"],
+    conn = psycopg2.connect(database=c["sql_db"], user=c["sql_user"], password=c["sql_secret"], host=c["sql_addr"],
                             port=c["sql_port"])
     return conn
 

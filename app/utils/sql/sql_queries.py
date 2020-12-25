@@ -45,14 +45,14 @@ def create_fighter_table():
 def drop_database():
     q = "DROP DATABASE IF EXISTS saltydata;"
     execute_return_none_autocommit(q)
-   print("DROP DATABASE")
+    print("DROP DATABASE")
 
 
 def drop_table(table_name):
     q = "DROP TABLE IF EXISTS %s;"
     v = (table_name,)
     execute_return_none(q, v)
-   print(f"DROP TABLE {table_name}")
+    print(f"DROP TABLE {table_name}")
 
 
 def insert_bout(bout):
