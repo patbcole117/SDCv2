@@ -15,10 +15,11 @@ def root():
 @app.route('/api/v1/bouts')
 def api_v1_bouts():
     bouts = sql_queries.select_all_bouts()
-    a = request.args.to_dict()
     
     if bouts:
+        a = request.args.to_dict()
         b_list = []
+
         sort = a.get("sort")
         if sort:
             pass
@@ -33,11 +34,6 @@ def api_v1_bouts():
 
         name = a.get("name")
         if name:
-            pass
-        else:
-            name = ""
-
-        if name != "":
             for b in bouts:
                 if name.upper() in b["red_fighter"].upper() or name.upper() in b["blue_fighter"].upper():
                     b_list.append(b)
@@ -70,9 +66,9 @@ def api_v1_help():
 @app.route('/api/v1/fighters')
 def api_v1_fighters():
     fighters = sql_queries.select_all_fighters()
-    a = request.args.to_dict()
-
+    
     if fighters:
+        a = request.args.to_dict()
         f_list = []
         sort = a.get("sort")
         if sort:
@@ -88,11 +84,6 @@ def api_v1_fighters():
 
         name = a.get("name")
         if name:
-            pass
-        else:
-            name = ""
-
-        if name != "":
             for f in fighters:
                 if name.upper() in f["name"].upper():
                     f_list.append(f)
