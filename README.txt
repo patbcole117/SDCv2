@@ -14,3 +14,7 @@ in app.mnt is a file named config.txt it should look like the following:
 
 In its place is a file named "c.txt" this is so git will add /app/mnt. Ill do my best to make
  sure the real config wont be added to the github repo like lasttime.
+
+ # Docker commands:
+ sudo docker build -t sdc:latest .
+ sudo docker run --name sdc01 -p 50200:50200 --mount source=sdc_data,target=/SDC/app/mnt sdc
