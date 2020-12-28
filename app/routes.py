@@ -112,7 +112,7 @@ def api_v1_sbo():
 
 @app.route('/api/v1/status')
 def api_v1_status():
-    conf = get_config()
+    conf = dict(get_config())
     conf["sql_secret"] = 'CHECK CONFIG'
     conf["sql_user"] = 'CHECK CONFIG'
     conf["is_running"] = True
