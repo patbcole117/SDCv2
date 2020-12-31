@@ -4,7 +4,7 @@ from app.utils.sql import sql_queries
 
 
 def calculate_elo(rank_winner, rank_loser, k=40):
-    print('CALCULATE ELO')
+    # print('CALCULATE ELO')
     rw = 10**(rank_winner/400)
     rl = 10**(rank_loser/400)
 
@@ -18,7 +18,6 @@ def calculate_elo(rank_winner, rank_loser, k=40):
 
 
 def handle_sbo_stream(sbo_stream):
-    print('HANDLE SBO STREAM')
     b = Bout(sbo_stream)
     fighters = [b.red_fighter, b.blue_fighter]
     for fighter in fighters:
@@ -28,7 +27,6 @@ def handle_sbo_stream(sbo_stream):
 
 
 def update_fighter_elo(bout):
-    print('UPDATE FIGHTER ELO')
     if bout.red_fighter == bout.winner:
         winner = Fighter(sql_queries.select_one_fighter_where_name_is(bout.red_fighter))
         loser = Fighter(sql_queries.select_one_fighter_where_name_is(bout.blue_fighter))
@@ -43,7 +41,6 @@ def update_fighter_elo(bout):
 
 
 def update_fighter_stats(bout, fighter_name):
-    print('UPDATE FIGHTER STATS')
     fighter_dict = sql_queries.select_one_fighter_where_name_is(fighter_name)
     if fighter_dict is not None:
         fighter = Fighter(fighter_dict)

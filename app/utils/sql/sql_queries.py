@@ -14,13 +14,12 @@ def create_bout_table():
         was_upset BOOL NOT NULL
         );'''
     execute_return_none(q)
-    print("CREATE TABLE BOUT")
+    
 
 
 def create_database(db):
     q = f"CREATE DATABASE {db} TEMPLATE template0;"
     execute_return_none_autocommit(q)
-    print("CREATE DATABASE")
 
 
 def create_fighter_table():
@@ -39,20 +38,17 @@ def create_fighter_table():
         UNIQUE(name));
         '''
     execute_return_none(q)
-    print("CREATE TABLE FIGHTER")
 
 
 def drop_database(db):
     q = f"DROP DATABASE IF EXISTS {db};"
     execute_return_none_autocommit(q)
-    print("DROP DATABASE")
 
 
 def drop_table(table_name):
     q = "DROP TABLE IF EXISTS %s;"
     v = (table_name,)
     execute_return_none(q, v)
-    print(f"DROP TABLE {table_name}")
 
 
 def insert_bout(bout):
@@ -61,7 +57,6 @@ def insert_bout(bout):
     v = (bout.red_fighter, bout.blue_fighter, bout.red_bets, bout.blue_bets, bout.winner, bout.bout_type,
          bout.bout_date, bout.was_upset)
     execute_return_none(q, v)
-    print(f"INSERT BOUT {bout.bout_date}")
 
 
 def insert_fighter(fighter):
@@ -70,20 +65,17 @@ def insert_fighter(fighter):
     v = (fighter.name, fighter.wins, fighter.losses, fighter.total_bouts, fighter.elo, fighter.current_streak,
          fighter.max_streak, fighter.num_upsets, fighter.date_of_last_bout, fighter.date_of_debut)
     execute_return_none(q, v)
-    print(f"INSERT FIGHTER {fighter.name}")
 
 
 def select_all_bouts():
     q = "SELECT * FROM bout;"
     r = execute_return_all(q)
-    print(f"SELECT * FROM bout")
     return tup_to_dict("bout", r)
 
 
 def select_all_fighters():
     q = "SELECT * FROM fighter;"
     r = execute_return_all(q)
-    print(f"SELECT * FROM fighter")
     return tup_to_dict("fighter", r)
 
 
@@ -91,7 +83,6 @@ def select_all_fighters_where_name_is(value):
     q = f"SELECT * FROM fighter WHERE name = %s;"
     v = (value,)
     r = execute_return_all(q, v)
-    print(f"SELECT fighters WHERE name: \'{value}\'")
     return tup_to_dict("fighter", r)
 
 
@@ -99,7 +90,6 @@ def select_one_fighter_where_name_is(value):
     q = f"SELECT * FROM fighter WHERE name = %s;"
     v = (value,)
     r = execute_return_all(q, v)
-    print(f"SELECT fighter WHERE name: \'{value}\'")
     if tup_to_dict("fighter", r) is not None:
         return tup_to_dict("fighter", r)[0]
     else:
@@ -136,4 +126,3 @@ def update_fighter(fighter):
     v = (fighter.wins, fighter.losses, fighter.total_bouts, fighter.elo, fighter.num_upsets, fighter.current_streak,
          fighter.max_streak, fighter.date_of_last_bout, fighter.name)
     execute_return_none(q,  v)
-    print(f"UPDATE FIGHTER {fighter.name}")

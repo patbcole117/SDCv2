@@ -9,6 +9,5 @@ if c["db_drop"]:
     sql_queries.create_database(c["sql_db"])
     sql_queries.create_fighter_table()
     sql_queries.create_bout_table()
-    print("DROP DB")
 
 app.run(debug=False, host=c['l_addr'], port=c['l_port'])

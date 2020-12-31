@@ -105,7 +105,6 @@ def api_v1_fighters():
 @app.route('/api/v1/sbo', methods=['POST'])
 def api_v1_sbo():
     sbo_stream = request.get_json()
-    print('SBO STREAM:', sbo_stream)
     handle_sbo_stream(sbo_stream)
     return 'SBO STREAM'
 
