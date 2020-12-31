@@ -1,4 +1,4 @@
-/.venv_sdc/
+/.sdc_venv/
 /.vscode/
 config.txt
 __pycache__

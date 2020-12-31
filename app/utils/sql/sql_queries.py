@@ -17,8 +17,8 @@ def create_bout_table():
     print("CREATE TABLE BOUT")
 
 
-def create_database():
-    q = "CREATE DATABASE saltydata TEMPLATE template0;"
+def create_database(db):
+    q = f"CREATE DATABASE {db} TEMPLATE template0;"
     execute_return_none_autocommit(q)
     print("CREATE DATABASE")
 
@@ -42,8 +42,8 @@ def create_fighter_table():
     print("CREATE TABLE FIGHTER")
 
 
-def drop_database():
-    q = "DROP DATABASE IF EXISTS saltydata;"
+def drop_database(db):
+    q = f"DROP DATABASE IF EXISTS {db};"
     execute_return_none_autocommit(q)
     print("DROP DATABASE")
 
