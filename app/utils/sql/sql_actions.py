@@ -6,16 +6,16 @@ import psycopg2
 def get_default_connection():
     c = get_config()
     # print(f"Connecting to {c['sql_default_db']}")
-    conn = psycopg2.connect(database=c["sql_default_db"], user=c["sql_user"], password=c["sql_secret"], host=c["sql_addr"],
-                            port=c["sql_port"])
+    conn = psycopg2.connect(database=c['SDC_SQL_DEFAULT_DB'], user=c['SDC_SQL_USER'], password=c['SDC_SQL_SECRET'], host=c['SDC_SQL_HOST'],
+                            port=c['SDC_SQL_PORT'])
     return conn
 
 
 def get_connection():
     c = get_config()
     # print(f"Connecting to {c['sql_db']}")
-    conn = psycopg2.connect(database=c["sql_db"], user=c["sql_user"], password=c["sql_secret"], host=c["sql_addr"],
-                            port=c["sql_port"])
+    conn = psycopg2.connect(database=c['SDC_SQL_DB'], user=c['SDC_SQL_USER'], password=c['SDC_SQL_SECRET'], host=c['SDC_SQL_HOST'],
+                            port=c['SDC_SQL_PORT'])
     return conn
 
 

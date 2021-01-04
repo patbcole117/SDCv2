@@ -111,8 +111,8 @@ def api_v1_sbo():
 
 @app.route('/api/v1/status')
 def api_v1_status():
-    conf = dict(get_config())
-    conf["sql_secret"] = 'CHECK CONFIG'
-    conf["sql_user"] = 'CHECK CONFIG'
+    conf = get_config()
+    conf['SDC_SQL_USER'] = 'CHECK CONFIG'
+    conf['SDC_SQL_SECRET'] = 'CHECK CONFIG'
     conf["is_running"] = True
     return jsonify(conf)

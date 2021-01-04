@@ -4,10 +4,10 @@ from app.utils.sql import sql_queries
 
 c = get_config()
 
-if c["db_drop"]:
-    sql_queries.drop_database(c["sql_db"])
-    sql_queries.create_database(c["sql_db"])
+if c['SDC_SQL_DROP'] == 'true':
+    sql_queries.drop_database(c['SDC_SQL_DB'])
+    sql_queries.create_database(c['SDC_SQL_DB'])
     sql_queries.create_fighter_table()
     sql_queries.create_bout_table()
 
-app.run(debug=False, host=c['l_addr'], port=c['l_port'])
+app.run(debug=False, host=c['SDC_HOST'], port=c['SDC_PORT'])
