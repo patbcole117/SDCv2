@@ -62,6 +62,10 @@ def api_v1_help():
     help['/api/v1/status'] = 'Display config.txt information.'
     return jsonify(help)
 
+@app.route('/api/v1/exactfighter')
+def api_v1_exactfighter():
+    pass
+    #TODO This must pass one exact figher to SUI's current bout table.
 
 @app.route('/api/v1/fighters')
 def api_v1_fighters():
