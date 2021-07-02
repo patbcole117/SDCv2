@@ -10,4 +10,4 @@ if c['SDC_SQL_DROP'] == 'true':
         sql_queries.create_bout_table()
 
 if __name__=='__main__':
-    app.run(debug=False, host=c['SUI_HOST'], port=c['SUI_PORT'])
+    app.run(debug=False, host=c['SDC_HOST'], port=c['SDC_PORT'])
