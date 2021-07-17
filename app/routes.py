@@ -69,8 +69,8 @@ def api_v1_exactfighter():
     if fighter_name:
         fighter = sql_queries.select_one_fighter_where_name_is(fighter_name)
         return fighter
-    #TODO This must pass one exact figher to SUI's current bout table.
-    return None
+        
+    return 'NO FIGHTER'
 
 @app.route('/api/v1/fighters')
 def api_v1_fighters():
