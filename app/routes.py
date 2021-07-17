@@ -56,16 +56,21 @@ def api_v1_bouts():
 def api_v1_help():
     help = {}
     help['/api/v1/bouts'] = 'Query the database and display bouts in json format.'
+    help['/api/v1/exactfighter'] = 'Query the database for a specific fighter in json format.'
+    help['/api/v1/fighters'] = 'Query the database and display all fighters in json format.'
     help['/api/v1/help'] = 'Display avalible URLs and descriptions.'
-    help['/api/v1/fighters'] = 'Query the database and display fighters in json format.'
     help['/api/v1/sbo'] = 'Salty Bout Observer URL to post current bout information.'
     help['/api/v1/status'] = 'Display config.txt information.'
     return jsonify(help)
 
 @app.route('/api/v1/exactfighter')
 def api_v1_exactfighter():
-    pass
+    fighter_name = request.args.get('name')
+    if fighter_name:
+        fighter = sql_queries.select_one_fighter_where_name_is(fighter_name)
+        return fighter
     #TODO This must pass one exact figher to SUI's current bout table.
+    return None
 
 @app.route('/api/v1/fighters')
 def api_v1_fighters():
